@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+	<title>Warhol</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+	<!-- Link Swiper's CSS -->
+	<link rel="stylesheet"href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+</head>
+<style type="text/css">
+:root{
+	--swiper-pagination-color: #de2508;
+	--swiper-theme-color: #de2508;
+}
+body{
+	margin: 0;
+}
+.container{
+	min-width: 360px;
+	width: 100vw;
+	height: 710px;
+	overflow-x: hidden;
+}
+.swiper-paintings{
+	width: 100%;
+	height: 500px;
+}
+.swiper-paintings .swiper-wrapper{
+	height: 100%;
+	align-items: center;
+	padding: 10px 0 30px;
+	box-sizing: border-box;
+}
+.swiper-paintings .swiper-slide{
+	max-width: calc(100% - 100px);
+	width: fit-content;
+	max-height: 100%;
+	display: flex;
+}
+.swiper-paintings .swiper-slide img{
+	display: block;
+	max-width: 100%;
+	max-height: 100%;
+	align-self: center;
+	box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.75);
+}
+.swiper-plaques{
+	position: relative;
+	width: 100%;
+	display: flex;
+}
+.swiper-plaques .swiper-slide{
+	max-width: 510px;
+	width: calc(100% - 100px);
+	display: flex;
+	justify-content: center;
+	align-self: center;
+}
+.swiper-plaques .swiper-pagination{
+	bottom: unset;
+	top: -16px;
+}
+.plaque{
+	position: relative;
+	width: fit-content;
+	font-family: 'Gilroy', sans-serif;
+	background-color: #efefef;
+	padding: 10px;
+	border: solid 1px #dedede;
+	box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
+	margin: 0 0 10px;
+}
+.plaque .artist{
+	font-weight: bold;
+}
+.plaque .title{
+	font-weight: bold;
+	font-style: italic;
+}
+.plaque .soldFor, .plaque .description{
+	font-size: 0.8em;
+	margin: 10px 0 0;
+}
+.plaque .num{
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	top: -15px;
+	right: -15px;
+	background-color: #de2508;
+	color: #fff;
+	font-weight: bold;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 4px 4px 3px rgba(0, 0, 0, 0.5);
+}
+*{
+	user-select: none;
+}
+@media screen and (max-width: 600px){
+	.swiper-paintings{
+		height: 450px;
+	}
+}
+@media screen and (max-width: 500px){
+	.swiper-paintings{
+		height: 400px;
+	}
+}
+</style>
+<body>
+<div class="container">
+	<div class="swiper-paintings">
+		<div class="swiper-wrapper"></div>
+	</div>
+	<div class="swiper-plaques">
+		<div class="swiper-wrapper"></div>
+		<div class="swiper-pagination"></div>
+		<div class="swiper-button-next swiper-button"></div>
+		<div class="swiper-button-prev swiper-button"></div>
+	</div>
+</div>
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script>
+	let arr = [
+		{
+			"artist": "Leonardo da Vinci",
+			"title": "Salvator Mundi",
+			"soldFor": "Sold for: $450.3 million at Christie’s (November 15, 2017)",
+			"description": "Leonardo Da Vinci’s <i>Salvator Mundi</i> is the most expensive painting ever sold at auction. It is one of less than 20 da Vinci’s paintings still in existence and is the last one remaining in private hands.",
+			"image":"images/1.jpg"
+		},
+		{
+			"artist": "Pablo Picasso",
+			"title": "Les Femmes D’Alger Version O (1954-55)",
+			"soldFor": "Sold for: $179.4 million at Christie’s (May 11, 2015)",
+			"description": "Picasso’s <i>Les Femmes D’Alger Version O</i> was bought in 2015 by the former Qatari prime minister, Hamad bin Jassim bin Jaber Al Thani.",
+			"image":"images/2.jpg"
+		},
+		{
+			"artist": "Amedeo Modigliani",
+			"title": "Nu Couché (1917) ",
+			"soldFor": "Sold for: $170.4 million at Christie’s (November 9, 2015)",
+			"description": "Amedeo Modigliani has two works in the top ten most expensive artworks ever sold at auction. <i>Nu Couche</i> was bought by Chinese billionaire Liu Yiqian back in 2015.",
+			"image":"images/3.jpg"
+		},
+		{
+			"artist": "Amedeo Modigliani",
+			"title": "Nu couché (sur le côté gauche) (1917)",
+			"soldFor": "Sold for: $157.2 million (May 2018)",
+			"description": "This is the largest painting of Modigliani’s career, measuring nearly 147 centimetres (58 inches) across.<br><br>Both artworks form part of a series of 22 reclining nudes painted between 1916 and 1919. The majority of the works are found in galleries across the world; nine are privately owned.",
+			"image":"images/4.jpg"
+		},
+		{
+			"artist": "Francis Bacon",
+			"title": "Three Studies Of Lucian Freud (1969) ",
+			"soldFor": "Sold for: $142.4 million at Christie’s (November 12, 2013)",
+			"description": "Irish-born British painter Francis Bacon's triple portrait of his friend and peer Lucian Freud sold for at auction in 2013.",
+			"image":"images/5.jpg"
+		},
+		{
+			"artist": "Qi Bashi",
+			"title": "12 Landscape Screens (1925) ",
+			"soldFor": "Sold for: $140.8 million at Beijing Poly Auction (December 17, 2017)",
+			"description": "This painting broke the record for the most ever paid for a Chinese work of art at $140 million.",
+			"image":"images/6.jpg"
+		},
+		{
+			"artist": "Gustav Klimt",
+			"title": "The Woman In Gold (1907) ",
+			"soldFor": "Sold for: $135 Million USD in 2006",
+			"description": "One of Gustav Klimt’s most mesmerising works. The 1907 portrait of Adele Bloch-Bauer was commissioned by her husband. It took Klimt three years to complete amid speculation the Austrian artist and his subject were lovers.<br><br>The artwork was seized by the Nazis after Adele’s death before being returned to its rightful owners decades later. In 2006, it was bought by cosmetic magnate Ronald Lauder and is on display at Manhattan’s Neue Galerie.",
+			"image":"images/7.jpg"
+		},
+		{
+			"artist": "Edvard Munch",
+			"title": "The Scream (1895) ",
+			"soldFor": "Sold for: $119.9 million at Sotheby’s (May 2, 2012)",
+			"description": "This 1895 work by Edvard Munch needs no introduction. Munch produced four versions of The Scream, which has become one the most celebrated images in art history.<br><br>The three other versions are on display at museums across Norway, however, this is the only version in private hands.",
+			"image":"images/8.jpg"
+		},
+		{
+			"artist": "Pablo Picasso",
+			"title": "Young Girl With A Flower Basket (1905)",
+			"soldFor": "Sold for: $115 million at Christie’s (May 8, 2018)",
+			"description": "This Pablo Picasso painting is the second Piccaso work to feature in the top ten most expensive artworks sold at auction.",
+			"image":"images/9.jpg"
+		},
+		{
+			"artist": "Claude Monet",
+			"title": "Meules (1890)",
+			"soldFor": "Sold for: $110.7 million at Sotheby’s (May 14, 2019)",
+			"description": "Widely regarded as the Master of Impressionism, Claude Monet produced 25 paintings in the haystacks series. It is famous for showing the subject in different lights at different times of day and in different seasons. This particular piece is held in private hands.",
+			"image":"images/10.jpg"
+		},
+	]
+
+	for(let i in arr){
+		$('.swiper-paintings .swiper-wrapper').append(`
+			<div class="swiper-slide">
+				<img src="${arr[i]['image']}">
+			</div>
+		`)
+
+		$('.swiper-plaques .swiper-wrapper').append(`
+			<div class="swiper-slide">
+				<div class="plaque">
+					<div class="num">${Number(i) + 1}</div>
+					<div class="artist">${arr[i]['artist']}</div>
+					<div class="title">${arr[i]['title']}</div>
+					<div class="soldFor">${arr[i]['soldFor']}</div>
+					<div class="description">${arr[i]['description']}</div>
+				</div>
+			</div>
+		`)
+	}
+
+	let swiperPaintings = new Swiper(".swiper-paintings", {
+		spaceBetween: 20,
+		autoResize: false,
+		slidesPerView: 'auto',
+		centeredSlides: true,
+		loop: true,
+		effect: 'coverflow',
+
+		coverflowEffect: {
+			rotate: 25,
+			stretch: 0,
+			depth: 50,
+			modifier: 1,
+			slideShadows: false,
+		},
+
+		pagination: {
+			el: ".swiper-pagination",
+			dynamicBullets: true,
+			clickable: true,
+		},
+		navigation: {
+			nextEl: ".swiper-button-next",
+			prevEl: ".swiper-button-prev",
+		},
+	});
+
+	let swiperPlaques = new Swiper(".swiper-plaques",{
+		spaceBetween: 2000,
+		slidesPerView: 'auto',
+		centeredSlides: true,
+		loop: true,
+	})
+
+	swiperPaintings.controller.control = swiperPlaques;
+	swiperPlaques.controller.control = swiperPaintings;
+</script>
+</body>
+</html>
