@@ -200,62 +200,74 @@ body{
 		},
 	]
 
-	for(let i in arr){
-		$('.swiper-paintings .swiper-wrapper').append(`
-			<div class="swiper-slide">
-				<img src="${arr[i]['image']}">
-			</div>
-		`)
+	const buildSwiper = ()=>{
 
-		$('.swiper-plaques .swiper-wrapper').append(`
-			<div class="swiper-slide">
-				<div class="plaque">
-					<div class="num">${Number(i) + 1}</div>
-					<div class="artist">${arr[i]['artist']}</div>
-					<div class="title">${arr[i]['title']}</div>
-					<div class="soldFor">${arr[i]['soldFor']}</div>
-					<div class="description">${arr[i]['description']}</div>
+		for(let i in arr){
+			$('.swiper-paintings .swiper-wrapper').append(`
+				<div class="swiper-slide">
+					<img src="${arr[i]['image']}">
 				</div>
-			</div>
-		`)
+			`)
+
+			$('.swiper-plaques .swiper-wrapper').append(`
+				<div class="swiper-slide">
+					<div class="plaque">
+						<div class="num">${Number(i) + 1}</div>
+						<div class="artist">${arr[i]['artist']}</div>
+						<div class="title">${arr[i]['title']}</div>
+						<div class="soldFor">${arr[i]['soldFor']}</div>
+						<div class="description">${arr[i]['description']}</div>
+					</div>
+				</div>
+			`)
+		}
+
+		initSwiper()
 	}
 
-	let swiperPaintings = new Swiper(".swiper-paintings", {
-		spaceBetween: 20,
-		autoResize: false,
-		slidesPerView: 'auto',
-		centeredSlides: true,
-		loop: true,
-		effect: 'coverflow',
+	const initSwiper = ()=>{
 
-		coverflowEffect: {
-			rotate: 25,
-			stretch: 0,
-			depth: 50,
-			modifier: 1,
-			slideShadows: false,
-		},
+		let swiperPaintings = new Swiper(".swiper-paintings", {
+			spaceBetween: 20,
+			autoResize: false,
+			slidesPerView: 'auto',
+			centeredSlides: true,
+			// loop: true,
+			effect: 'coverflow',
 
-		pagination: {
-			el: ".swiper-pagination",
-			dynamicBullets: true,
-			clickable: true,
-		},
-		navigation: {
-			nextEl: ".swiper-button-next",
-			prevEl: ".swiper-button-prev",
-		},
-	});
+			coverflowEffect: {
+				rotate: 25,
+				stretch: 0,
+				depth: 50,
+				modifier: 1,
+				slideShadows: false,
+			},
 
-	let swiperPlaques = new Swiper(".swiper-plaques",{
-		spaceBetween: 2000,
-		slidesPerView: 'auto',
-		centeredSlides: true,
-		loop: true,
-	})
+			pagination: {
+				el: ".swiper-pagination",
+				dynamicBullets: true,
+				clickable: true,
+			},
+			navigation: {
+				nextEl: ".swiper-button-next",
+				prevEl: ".swiper-button-prev",
+			},
+		});
 
-	swiperPaintings.controller.control = swiperPlaques;
-	swiperPlaques.controller.control = swiperPaintings;
+		let swiperPlaques = new Swiper(".swiper-plaques",{
+			spaceBetween: 2000,
+			slidesPerView: 'auto',
+			centeredSlides: true,
+			// loop: true,
+		})
+
+		swiperPaintings.controller.control = swiperPlaques;
+		swiperPlaques.controller.control = swiperPaintings;
+
+		swiperPaintings.activeIndex = 0;
+	}
+
+	buildSwiper();	
 </script>
 </body>
 </html>
