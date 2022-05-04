@@ -1,2 +1,2 @@
 # warhol
-Top ten paintings sold at auction
+Top ten most expensive paintings sold at auction.
